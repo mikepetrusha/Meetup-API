@@ -1,7 +1,7 @@
 const sequelize = require('../db')
 const { DataTypes } = require('sequelize')
 
-const meetup = sequelize.define('meetup', {
+const meetupDB = sequelize.define('meetup', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -26,4 +26,4 @@ const meetup = sequelize.define('meetup', {
 
 })
 
-module.exports = { meetup }
+module.exports = { meetupDB }

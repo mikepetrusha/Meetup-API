@@ -4,6 +4,10 @@ const app = express()
 const PORT = process.env.PORT
 const sequelize = require('./db')
 const models = require('./models/models')
+const router = require('./routes/routes')
+
+app.use(express.json())
+app.use('/api', router)
 
 
 const start = async () => {
