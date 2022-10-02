@@ -1,0 +1,19 @@
+{
+  "name": "meetup-api",
+  "version": "1.0.0",
+  "description": "CRUD REST Web API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikepetrusha/Meetup-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikepetrusha/Meetup-API/issues"
+  },
+  "homepage": "https://github.com/mikepetrusha/Meetup-API#readme"
+}
