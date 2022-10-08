@@ -4,7 +4,7 @@ const meetupDTO = Joi.object({
     title: Joi.string(),
     description: Joi.string(),
     keywords: Joi.string(),
-    eventInformation: Joi.string(),
+    eventInformation: Joi.string()
 })
 
-module.exports = meetupDTO
+module.exports = { meetupDTO }
