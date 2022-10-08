@@ -3,12 +3,19 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT
 const sequelize = require('./db')
-const models = require('./models/models')
 const router = require('./routes/routes')
+const swaggerUi = require('swagger-ui-express')
 
 app.use(express.json())
 app.use('/api', router)
 
+const swaggerDocument = require('./swagger/swagger-output.json');
+
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
 
 const start = async () => {
     try {

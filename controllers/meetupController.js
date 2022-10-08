@@ -30,13 +30,13 @@ class MeetupController {
         }
 
         const meetups = await getMeetups(title, keywords, limit, page, sort)
-        return res.json(meetups)
+        return res.status(200).json(meetups)
     }
 
     async getOne(req, res) {
         const { id } = req.params
         const meetup = await meetupDB.findOne({ where: { id } })
-        return res.json(meetup)
+        return res.status(200).json(meetup)
     }
 
     async create(req, res) {
@@ -48,20 +48,20 @@ class MeetupController {
 
         const { title, description, keywords, eventInformation } = req.body
         const meetup = await meetupDB.create({ title, description, keywords, eventInformation })
-        return res.json(meetup)
+        return res.status(201).json(meetup)
     }
 
     async update(req, res) {
         const { id } = req.params
         const { title, description, keywords, eventInformation } = req.body
         await meetupDB.update({ title, description, keywords, eventInformation }, { where: { id } })
-        return res.send('Meetup was updated')
+        return res.status(200).send('Meetup was updated')
     }
 
     async delete(req, res) {
         const { id } = req.params
         await meetupDB.destroy({ where: { id } })
-        return res.send('Meetup was deleted')
+        return res.status(200).send('Meetup was deleted')
     }
 }
 
