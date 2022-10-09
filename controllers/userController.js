@@ -4,7 +4,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const generateToken = (id, email, role) => {
-    return jwt.sign({ id, email, role }, process.env.JWT_ACCESS_SECRET, { expiresIn: '24h' })
+    const accessToken = jwt.sign({ id, email, role }, process.env.JWT_ACCESS_SECRET, { expiresIn: '24h' })
+    const refreshToken = jwt.sign({ id, email, role }, process.env.JWT_REFRESH_SECRET, { expiresIn: '30d' })
+    return { accessToken, refreshToken }
 }
 
 
