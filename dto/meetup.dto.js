@@ -9,6 +9,7 @@ const meetupDTO = Joi.object({
 
 const meetupQueryDTO = Joi.object({
     title: Joi.string(),
+    keywords: Joi.string(),
     limit: Joi.number(),
     page: Joi.number(),
     sort: Joi.number()
