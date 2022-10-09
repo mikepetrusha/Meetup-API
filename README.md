@@ -25,9 +25,9 @@ Stack
  3. Swagger documentation
  4. Authorization system using JWT
  5. There are two types of users: 'USER'
- and 'ADMIN' (they can register/edit/delete the Meetups)
+ and 'ADMIN' (they can register/update/delete the Meetups)
 
- # An example of how an agi works
+ # An example of how an API works
  1. Registration and login
  <img width="1356" alt="image" src="https://user-images.githubusercontent.com/87857659/194777673-3ef143f0-3988-41f2-b387-f2cf95ab3ccd.png">
 
@@ -44,11 +44,14 @@ Stack
 
  5. DTO validation
  <img width="1351" alt="image" src="https://user-images.githubusercontent.com/87857659/194778345-2e3f3707-52ff-443f-a8f2-e3ba4eb7de43.png">
+ 
+ 6. Search Meetup by title
+ <img width="1352" alt="image" src="https://user-images.githubusercontent.com/87857659/194779131-faad59f2-9457-44ef-9d23-e58b38b7ba3b.png">
 
- 6. Create new Meetup with role 'USER'
+ 7. Create new Meetup with role 'USER'
  <img width="1352" alt="image" src="https://user-images.githubusercontent.com/87857659/194778531-d5f0a968-086c-41d8-b64d-8eda8f0c74f6.png">
  
- 7. Swagger documentation
+ 8. Swagger documentation
  <img width="1438" alt="image" src="https://user-images.githubusercontent.com/87857659/194778555-a49da978-25e2-4383-adc9-2e27e3c11056.png">
 
 
