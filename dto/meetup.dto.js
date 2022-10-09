@@ -7,4 +7,15 @@ const meetupDTO = Joi.object({
     eventInformation: Joi.string()
 })
 
-module.exports = { meetupDTO }
+const meetupQueryDTO = Joi.object({
+    title: Joi.string(),
+    limit: Joi.number(),
+    page: Joi.number(),
+    sort: Joi.number()
+})
+
+const meetupParamDTO = Joi.object({
+    id: Joi.number()
+})
+
+module.exports = { meetupDTO, meetupQueryDTO, meetupParamDTO }

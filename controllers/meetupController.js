@@ -1,10 +1,16 @@
 const { meetupDB } = require('../models/models')
-const { meetupDTO } = require('../dto/meetup.dto')
+const { meetupDTO, meetupQueryDTO, meetupParamDTO } = require('../dto/meetup.dto')
 
 
 class MeetupController {
     async getAll(req, res) {
         const { title, keywords, limit, page, sort } = req.query
+
+        try {
+            await meetupQueryDTO.validateAsync(req.query)
+        } catch (error) {
+            return res.status(400).send("The paremetrs are set incorrectly.")
+        }
 
         async function getMeetups(title, keywords, limit = 5, page = 1, sort = 0) {
             let meetups
@@ -35,6 +41,13 @@ class MeetupController {
 
     async getOne(req, res) {
         const { id } = req.params
+
+        try {
+            await meetupParamDTO.validateAsync(req.params)
+        } catch (error) {
+            return res.status(400).send("The paremetrs are set incorrectly.")
+        }
+
         const meetup = await meetupDB.findOne({ where: { id } })
         return res.status(200).json(meetup)
     }
@@ -43,7 +56,7 @@ class MeetupController {
         try {
             await meetupDTO.validateAsync(req.body)
         } catch (error) {
-            return res.send("The paremetrs are set incorrectly. All parametrs must be a string.")
+            return res.status(400).send("The paremetrs are set incorrectly. All parametrs must be a string.")
         }
 
         const { title, description, keywords, eventInformation } = req.body
@@ -54,12 +67,27 @@ class MeetupController {
     async update(req, res) {
         const { id } = req.params
         const { title, description, keywords, eventInformation } = req.body
+
+        try {
+            await meetupDTO.validateAsync(req.body)
+            await meetupParamDTO.validateAsync(req.params)
+        } catch (error) {
+            return res.status(400).send("The paremetrs are set incorrectly.")
+        }
+
         await meetupDB.update({ title, description, keywords, eventInformation }, { where: { id } })
         return res.status(200).send('Meetup was updated')
     }
 
     async delete(req, res) {
         const { id } = req.params
+
+        try {
+            await meetupParamDTO.validateAsync(req.params)
+        } catch (error) {
+            return res.status(400).send("The paremetrs are set incorrectly.")
+        }
+
         await meetupDB.destroy({ where: { id } })
         return res.status(200).send('Meetup was deleted')
     }
