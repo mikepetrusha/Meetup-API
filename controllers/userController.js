@@ -11,6 +11,16 @@ const generateToken = (id, email, role) => {
 
 
 class UserController {
+    async googleAuth(email, password, role = 'USER') {
+        const candidate = await userDB.findOne({ where: { email } });
+        if (candidate) {
+            return generateToken(candidate.id, candidate.email, candidate.role);
+        }
+        const hashPassword = await bcrypt.hash(password, 5);
+        const user = await userDB.create({ email, role, password: hashPassword });
+        return generateToken(user.id, user.email, user.role);
+    }
+
     async registration(req, res) {
         try {
             const { email, password, role } = req.body

@@ -5,6 +5,8 @@ const PORT = process.env.PORT
 const sequelize = require('./db')
 const router = require('./routes/routes')
 const swaggerUi = require('swagger-ui-express')
+const session = require('express-session')
+app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 
 app.use(express.json())
 app.use('/api', router)
